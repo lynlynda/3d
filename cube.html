@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>cube</title>
+  <style>
+    #view{
+      width: 160px;
+      height: 160px;
+      margin: 80px auto 0 auto;
+
+    }
+    #box{
+      position: relative;
+      transform-style: preserve-3d;
+      perspective-origin: 25% -120px;
+      -webkit-transform-style: preserve-3d;
+      -webkit-perspective-origin: 25% -120px;
+
+      /*旋转基点*/
+      transform-origin: 80px 80px 0px;
+      animation:gaolin 2s linear infinite;    
+    }
+    @-webkit-keyframes gaolin{
+      0%  
+     {  
+         -webkit-transform: translateZ(-10em) rotateX(0) rotateY(0deg);  
+         transform: translateZ(-10em) rotateX(0) rotateY(0deg);  
+     }  
+
+     100%  
+     {  
+         -webkit-transform: translateZ(-10em) rotateX(360deg) rotateY(360deg);  
+         transform: translateZ(-10em) rotateX(360deg) rotateY(360deg);  
+     }
+    }
+     #box:hover{
+      -webkit-transform-origin: 80px 80px 0px;
+      transform-origin: 80px 80px 0px;
+      animation:gaolin 5s linear infinite;
+      -webkit-animation:gaolin 5s linear infinite;      
+     }
+    #box div{
+      width: 160px;
+      height: 160px;
+      background: rgba(255,32,32,0.1);
+      position: absolute;
+      text-align: center;
+      line-height: 160px;
+      font-size: 100px;
+      color: rgba(123,234,224,1);
+      border: 2px solid rgba(255,32,32,0.6) ; 
+      /*backface-visibility:hidden;*/ 
+
+    }
+    
+    .d1{
+      -webkit-transform: translateZ(80px);
+      /*-webkit-transform: translateZ(80px);*/
+    }
+    .d2{
+      transform: rotateX(90deg) translateZ(-80px); 
+    }
+    .d3{
+      transform: rotateY(90deg) translateZ(80px);
+    }
+    .d4{
+      transform: rotateY(-90deg) translateZ(80px);
+    }
+    .d5{
+       transform: rotateX(90deg) translateZ(80px);
+    }
+    .d6{
+      -webkit-transform: translateZ(-80px);
+    }
+  </style>
+</head>
+<body>
+  <div id="view">
+    <div id="box">
+      <div class="d1">1</div>
+      <div class="d2">2</div>
+      <div class="d3">3</div>
+      <div class="d4">4</div>
+      <div class="d5">5</div>
+      <div class="d6">6</div>
+    </div>
+  </div>
+</body>
+</html>
