@@ -19,7 +19,7 @@
 
       /*旋转基点*/
       transform-origin: 80px 80px 0px;
-      animation:gaolin 2s linear infinite;    
+      animation:gaolin 3s linear infinite;    
     }
     @-webkit-keyframes gaolin{
       0%  
@@ -27,11 +27,27 @@
          -webkit-transform: translateZ(-10em) rotateX(0) rotateY(0deg);  
          transform: translateZ(-10em) rotateX(0) rotateY(0deg);  
      }  
-
+    10%{
+       -webkit-transform: translateZ(-10em) rotateX(0) rotateY(30deg) rotateZ(30deg);  
+       transform: translateZ(-10em) rotateX(0) rotateY(30deg) rotateZ(30deg);  
+    }
+    30%{
+       -webkit-transform: translateZ(-10em) rotateX(0) rotateY(60deg) rotateZ(100deg);  
+       transform: translateZ(-10em) rotateX(0) rotateY(60deg) rotateZ(100deg);  
+    }
+    40%{
+       -webkit-transform: translateZ(-10em) rotateX(0) rotateY(120deg) rotateZ(120deg);  
+         transform: translateZ(-10em) rotateX(0) rotateY(120deg) rotateZ(120deg);  
+    }
+    65%{
+      -webkit-transform: translateZ(-10em) rotateX(0) rotateY(240deg) rotateZ(240deg);  
+         transform: translateZ(-10em) rotateX(0) rotateY(240deg) rotateZ(240deg);  
+    }
+    
      100%  
      {  
-         -webkit-transform: translateZ(-10em) rotateX(360deg) rotateY(360deg);  
-         transform: translateZ(-10em) rotateX(360deg) rotateY(360deg);  
+         -webkit-transform: translateZ(-10em) rotateX(360deg) rotateY(360deg) rotateZ(0);  
+         transform: translateZ(-10em) rotateX(360deg) rotateY(360deg) rotateZ(0);  
      }
     }
      #box:hover{
