@@ -5,31 +5,39 @@
   <title>zaowujie</title>
   <link rel="stylesheet" href="zao.css">
   <style>
-    body,html{
-      width: 100%;
-      height: 100%;
-      margin: 0;
-    }
+  body{
+
+      background-image: url(pic/front.jpg) ;
+      background-repeat: repeat-x;
+  }
     #container{
-      width: 100%;
-      height: 100%;    
-      /*position: absolute;*/
-      perspective:2000px;
+      width: 210px;
+      height: 1170px; 
+      margin: 0px auto;
+      perspective:400px; 
+      perspective-origin: 50% 50%;
     }
     #stage{
       width: 100%;
-      height: 100%; 
+      height: 100%;
       transform-style: preserve-3d;
-      transform: translateZ(1400px);
+      /* 
+      
+      transform: translateZ(1400px);*/
     }
+   /* .sky{
+      background: url(pic/sky.png) 0 0;
+      height: 620px;
+      width: 620px;
+      transform: rotateX(90deg);
+    }*/
     #box{
       position: relative;
       width: 210px;
       height: 100%;
       margin: 0 auto ;
       transform-style: preserve-3d;
-      perspective-origin: 50% 50%;
-      transform-origin:50% 50%;
+      transform-origin:50% 50% 0;
       /*perspective:663px;*/
       /*
       -webkit-perspective:663px;*/
@@ -45,6 +53,7 @@
       height: 100%;
       width: 210px;
       position: absolute;
+      cursor: move;
 
     }
   </style>
@@ -73,7 +82,8 @@
         <div class="p18"></div>
         <div class="p19"></div>
         <div class="p20"></div>
-      </div>     
+      </div><!--  
+      <div class="sky"></div>  -->   
     </div>
   </div>
   <script type="text/javascript">
@@ -81,7 +91,7 @@
     var oDivs = oBox.getElementsByTagName('div');
     var len = oDivs.length;
     var angle = 360/len;
-    var r = Math.round(105/ Math.tan(Math.PI/len)) - 1;
+    var r = Math.round(105/ Math.tan(Math.PI/len)) - 20;
     for (var i = 0; i < len; i++) {
       img = i+1;
       oDivs[i].style.backgroundImage = 'url(pic/'+img+'.png)' ;
@@ -90,10 +100,25 @@
 
       // oDivs[i].style.background = 'rgba(233,45,67,.3)' ;
 
-      oDivs[i].style.transform = 'rotateY('+(angle*i)+'deg) translateZ('+r+'px)';
-
+     oDivs[i].style.transform = 'rotateY('+(angle*i)+'deg) translateZ('+r+'px)';//
 
     }
+
+     var startX = 0;
+     document.onmousedown = function(e){
+      var x = e.clientX;
+      document.onmouseover = function(e){
+        var difX = e.clientX - x;
+        var rotateDeg = Math.asin(difX/2/r)*180/Math.PI;
+        startX = startX - rotateDeg;
+        x = e.clientX;
+        oBox.style.transform = 'rotateY('+startX+'deg)';
+      }
+      document.onmouseup = function(){
+        oBox.onmousedown = document.onmouseover  = null;
+      }
+     }
+   
   </script>
 </body>
 </html>
